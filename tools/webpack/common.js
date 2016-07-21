@@ -1,12 +1,13 @@
 const webpack = require('webpack')
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
   // root: path.resolve(__dirname),
   output: {
-    path: path.resolve('./dist'),
+    path: path.resolve('./'),
     publicPath : '/',
     filename: "[name].js"
   },
@@ -40,6 +41,13 @@ module.exports = {
      * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
      */
     new ForkCheckerPlugin(),
+
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      inject: 'body',
+      hash: true,
+      filename : 'index.html'
+    }),
 
     /*
      * Plugin: OccurenceOrderPlugin

@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const webpackCommon = require('./common');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const entryPath = path.join(__dirname, '../main')
 
@@ -30,12 +29,6 @@ module.exports = webpackMerge(webpackCommon, {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      inject: 'body',
-      hash: true,
-      filename : 'index.html'
-    }),
     // Avoid publishing files when compilation fails
     new webpack.NoErrorsPlugin()
   ]
